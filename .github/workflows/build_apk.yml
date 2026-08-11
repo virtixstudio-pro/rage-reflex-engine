@@ -25,10 +25,14 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
-    - name: Install SDL2 (Linux)
+    - name: Download and setup SDL2
       run: |
-        sudo apt-get update
-        sudo apt-get install -y libsdl2-dev libsdl2-image-dev
+        wget https://github.com/libsdl-org/SDL/releases/download/release-2.30.6/SDL2-devel-2.30.6-android.tar.gz
+        tar -xf SDL2-devel-2.30.6-android.tar.gz
+        mkdir -p app/jniLibs/SDL2/include
+        mkdir -p app/jniLibs/SDL2/lib/arm64-v8a
+        cp -r SDL2-2.30.6/android/jni/SDL2/include/* app/jniLibs/SDL2/include/
+        cp SDL2-2.30.6/android/jni/SDL2/libs/arm64-v8a/libSDL2.so app/jniLibs/SDL2/lib/arm64-v8a/
 
     - name: Build APK
       run: |
