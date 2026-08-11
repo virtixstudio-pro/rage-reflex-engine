@@ -1,17 +1,16 @@
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 33
-    defaultConfig {
-        applicationId "com.perserverance.moteur"
-        minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
