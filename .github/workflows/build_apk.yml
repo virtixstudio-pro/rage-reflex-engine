@@ -17,6 +17,9 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
@@ -27,7 +30,7 @@ jobs:
 
     - name: Build APK
       run: |
-        ./gradlew assembleDebug
+        gradle assembleDebug
       env:
         ANDROID_NDK_HOME: $ANDROID_HOME/ndk/25.1.8937393
 
